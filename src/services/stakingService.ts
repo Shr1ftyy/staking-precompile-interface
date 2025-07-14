@@ -12,9 +12,14 @@ import {
 } from '../types';
 
 // Extend Window interface for ethereum
+interface EthereumProvider extends ethers.Eip1193Provider {
+  on(event: string, listener: (...args: any[]) => void): void;
+  removeListener(event: string, listener: (...args: any[]) => void): void;
+}
+
 declare global {
   interface Window {
-    ethereum?: ethers.Eip1193Provider;
+    ethereum?: EthereumProvider;
   }
 }
 
