@@ -1,23 +1,6 @@
 # Staking Contract Frontend
 
-A modern, responsive React TypeScript frontend for interacting with EVM-based staking smart contracts. This application provides a user-friendly interface to view stakes, remove stakes, and transfer staked tokens.
-
-## Features
-
-- 🔗 **Wallet Integration**: Connect with MetaMask and other Web3 wallets
-- 👁️ **Stake Viewer**: Query and display stake amounts for specific hotkey/coldkey/netuid combinations
-- ➖ **Stake Removal**: Remove partial or full stakes with transaction tracking
-- 🔄 **Stake Transfer**: Transfer stakes between coldkeys and networks
-- ⚙️ **Contract Configuration**: Easily configure smart contract addresses
-- 📱 **Responsive Design**: Modern UI that works on desktop and mobile
-- 🔔 **Real-time Notifications**: Transaction status updates with blockchain explorer links
-
-## Tech Stack
-
-- **Frontend**: React 18 + TypeScript + Vite
-- **Styling**: Tailwind CSS
-- **Web3**: ethers.js
-- **Icons**: Lucide React
+An interface for interacting with the staking precompile on the Bittensor network
 
 ## Quick Start
 
@@ -106,64 +89,4 @@ src/
 ├── types/              # TypeScript type definitions
 │   └── index.ts           # Shared interfaces and utilities
 └── App.tsx             # Main application component
-```
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-### Key Components
-
-- **WalletConnect**: Manages Web3 wallet connection and displays connection status
-- **StakeViewer**: Provides interface to query stake amounts from the contract
-- **RemoveStake**: Handles both partial and full stake removal operations
-- **TransferStake**: Manages stake transfers between different coldkeys and networks
-- **ContractConfig**: Allows users to configure the smart contract address
-
-## Security Considerations
-
-- Always verify contract addresses before interacting
-- Double-check transaction parameters before submitting
-- Use testnet for testing before mainnet deployment
-- Keep your private keys secure and never share them
-
-## Browser Support
-
-- Chrome/Chromium-based browsers with MetaMask
-- Firefox with MetaMask
-- Brave browser
-- Any browser with a compatible Web3 wallet extension
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is open source and available under the MIT License.
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```

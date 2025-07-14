@@ -38,7 +38,7 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
       try {
         validateSs58(trimmedHotkey);
         hotkeyPubKey = ss58ToPubKey(trimmedHotkey);
-      } catch (err) {
+      } catch {
         throw new Error('Invalid SS58 hotkey format. Please provide a valid SS58 address starting with "5".');
       }
 
@@ -56,7 +56,7 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
 
   const handleRemoveStakeFull = async () => {
     if (!hotkey || !netuid) {
-      setError('Please enter hotkey and network UID');
+      setError('Please enter hotkey and subnet UID');
       return;
     }
 
@@ -71,7 +71,7 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
       try {
         validateSs58(trimmedHotkey);
         hotkeyPubKey = ss58ToPubKey(trimmedHotkey);
-      } catch (err) {
+      } catch {
         throw new Error('Invalid SS58 hotkey format. Please provide a valid SS58 address starting with "5".');
       }
 
@@ -123,14 +123,14 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
 
         <div>
           <label htmlFor="remove-netuid" className="block text-sm font-medium text-gray-300 mb-1">
-            Network UID
+            Subnet UID
           </label>
           <input
             type="number"
             id="remove-netuid"
             value={netuid}
             onChange={(e) => setNetuid(e.target.value)}
-            placeholder="Enter network UID"
+            placeholder="Enter subnet UID"
             className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
             min="0"
           />
@@ -185,7 +185,7 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
       <div className="mt-4 p-3 bg-yellow-900 border border-yellow-700 rounded-lg">
         <p className="text-sm text-yellow-100">
           <strong>⚠️ Warning:</strong> Removing stake will initiate a withdrawal process. 
-          "Remove Full" will remove all staked tokens for this hotkey and network.
+          "Remove Full" will remove all staked tokens for this hotkey and subnet.
         </p>
       </div>
     </div>

@@ -45,7 +45,7 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
         validateSs58(trimmedHotkey);
         hotkeyPubKey = ss58ToPubKey(trimmedHotkey);
         console.log(`Converted hotkey ${trimmedHotkey} to pubkey ${hotkeyPubKey}`);
-      } catch (err) {
+      } catch {
         throw new Error('Invalid SS58 hotkey format. Please provide a valid SS58 address starting with "5".');
       }
 
@@ -54,7 +54,7 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
         validateH160(trimmedColdkey);
         coldkeyPubKey = h160ToPubKey(trimmedColdkey);
         console.log(`Converted coldkey ${trimmedColdkey} to pubkey ${coldkeyPubKey}`);
-      } catch (err) {
+      } catch {
         throw new Error('Invalid wallet address format. Please ensure your wallet is properly connected.');
       }
 
@@ -102,14 +102,14 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
 
         <div>
           <label htmlFor="netuid" className="block text-sm font-medium text-gray-300 mb-1">
-            Network UID
+            Subnet UID
           </label>
           <input
             type="number"
             id="netuid"
             value={netuid}
             onChange={(e) => setNetuid(e.target.value)}
-            placeholder="Enter network UID"
+            placeholder="Enter subnet UID"
             className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
             min="0"
           />
@@ -146,20 +146,11 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
             <h3 className="text-lg font-semibold text-green-100 mb-2">Stake Amount</h3>
             <p className="text-2xl font-bold text-green-200">{stakeAmount} SN{netuid} Tokens</p>
             <p className="text-sm text-green-300 mt-1">
-              Staked from {walletAddress?.slice(0, 10)}... to {hotkey.slice(0, 10)}... on network {netuid}
+              Staked from {walletAddress?.slice(0, 10)}... to {hotkey.slice(0, 10)}... on subnet {netuid}
             </p>
           </div>
         </div>
       )}
-
-      <div className="mt-4 p-3 bg-blue-900 border border-blue-700 rounded-lg">
-        <p className="text-sm text-blue-100">
-          <strong>ℹ️ Address Formats:</strong><br />
-          • Hotkey: SS58 format (starts with "5", 48 characters)<br />
-          • Coldkey: Automatically set to your connected wallet address (H160 format)<br />
-          Addresses are automatically converted to the required format for the smart contract.
-        </p>
-      </div>
     </div>
   );
 };

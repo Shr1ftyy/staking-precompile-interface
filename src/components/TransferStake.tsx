@@ -38,7 +38,7 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
       try {
         validateSs58(trimmedDestinationColdkey);
         destinationColdkeyPubKey = ss58ToPubKey(trimmedDestinationColdkey);
-      } catch (err) {
+      } catch {
         throw new Error('Invalid SS58 destination coldkey format. Please provide a valid SS58 address starting with "5".');
       }
 
@@ -46,7 +46,7 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
       try {
         validateSs58(trimmedHotkey);
         hotkeyPubKey = ss58ToPubKey(trimmedHotkey);
-      } catch (err) {
+      } catch {
         throw new Error('Invalid SS58 hotkey format. Please provide a valid SS58 address starting with "5".');
       }
 
@@ -103,14 +103,14 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label htmlFor="origin-netuid" className="block text-sm font-medium text-gray-300 mb-1">
-              Origin Network UID
+              Origin Subnet UID
             </label>
             <input
               type="number"
               id="origin-netuid"
               value={originNetuid}
               onChange={(e) => setOriginNetuid(e.target.value)}
-              placeholder="From network"
+              placeholder="From subnet"
               className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
               min="0"
             />
@@ -118,14 +118,14 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
 
           <div>
             <label htmlFor="destination-netuid" className="block text-sm font-medium text-gray-300 mb-1">
-              Destination Network UID
+              Destination Subnet UID
             </label>
             <input
               type="number"
               id="destination-netuid"
               value={destinationNetuid}
               onChange={(e) => setDestinationNetuid(e.target.value)}
-              placeholder="To network"
+              placeholder="To subnet"
               className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
               min="0"
             />
@@ -176,7 +176,7 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
       <div className="mt-4 p-3 bg-blue-900 border border-blue-700 rounded-lg">
         <p className="text-sm text-blue-100">
           <strong>ℹ️ Info:</strong> This will transfer staked tokens from one coldkey to another, 
-          potentially across different networks. Use SS58 format for both destination coldkey and hotkey addresses.
+          potentially across different subnets. Use SS58 format for both destination coldkey and hotkey addresses.
         </p>
       </div>
     </div>

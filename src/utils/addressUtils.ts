@@ -42,7 +42,7 @@ export function encodePubKey(pubKey: string, prefix: number): string {
 export function encodePolkadotAddress(addr: string, prefix: number): string {
   try {
     return encodeAddress(addr, prefix);
-  } catch (e) {
+  } catch {
     throw new Error('Invalid Address provided!');
   }
 }
