@@ -293,7 +293,7 @@ function App() {
 
         {/* Footer */}
         <div className="mt-12 text-center text-gray-400 text-sm">
-          <p>Built w/ love ❤️ by <a href="https://github.com/shr1ftyy" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">shr1ftyy</a></p>
+          <p>Built w/ ❤️ by <a href="https://github.com/shr1ftyy" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">shr1ftyy</a></p>
         </div>
       </div>
     </div>
