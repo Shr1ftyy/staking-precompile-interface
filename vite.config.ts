@@ -7,5 +7,5 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.js',
   },
-  base: '/staking-precompile-interface/',
+  base: '/alpha/',
 })
