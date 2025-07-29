@@ -5,7 +5,9 @@ import { StakeViewer } from './components/StakeViewer';
 import { RemoveStake } from './components/RemoveStake';
 import { TransferStake } from './components/TransferStake';
 import { ThemeToggle } from './components/ThemeToggle';
+import { ViewModeToggle } from './components/ViewModeToggle';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { ViewModeProvider } from './contexts/ViewModeContext';
 import { StakingService } from './services/stakingService';
 import type { RemoveStakeParams, TransferStakeParams } from './types';
 
@@ -170,30 +172,32 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
-        <div className="container mx-auto px-4 py-8">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center">
-              <Coins className="text-black dark:text-white mr-3" size={40} />
-              <div>
-                <h1 className="text-3xl font-bold text-black dark:text-white">Bittensor EVM Staking Interface</h1>
-                <p className="text-gray-600 dark:text-gray-300 mt-1">
-                  Stake, remove, and transfer your alpha tokens on Bittensor
-                </p>
+      <ViewModeProvider>
+        <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+          <div className="container mx-auto px-4 py-8">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center">
+                <Coins className="text-black dark:text-white mr-3" size={40} />
+                <div>
+                  <h1 className="text-3xl font-bold text-black dark:text-white">Bittensor EVM Staking Interface</h1>
+                  <p className="text-gray-600 dark:text-gray-300 mt-1">
+                    Stake, remove, and transfer your alpha tokens on Bittensor
+                  </p>
+                </div>
+              </div>
+              
+              {/* Controls */}
+              <div className="flex items-center space-x-4">
+                <ViewModeToggle />
+                <ThemeToggle />
+                <WalletConnect
+                  onConnect={handleWalletConnect}
+                  isConnected={isConnected}
+                  address={walletAddress}
+                />
               </div>
             </div>
-            
-            {/* Controls */}
-            <div className="flex items-center space-x-4">
-              <ThemeToggle />
-              <WalletConnect
-                onConnect={handleWalletConnect}
-                isConnected={isConnected}
-                address={walletAddress}
-              />
-            </div>
-          </div>
 
           {/* Notifications */}
           {notification && (
@@ -293,6 +297,7 @@ function App() {
         </div>
       </div>
     </div>
+      </ViewModeProvider>
     </ThemeProvider>
   );
 }
