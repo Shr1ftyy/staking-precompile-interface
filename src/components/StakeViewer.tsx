@@ -68,15 +68,15 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
   };
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-700">
+    <div className="card">
       <div className="flex items-center mb-6">
-        <Eye className="mr-3 text-blue-400" size={24} />
-        <h2 className="text-xl font-semibold text-white">View Stake</h2>
+        <Eye className="mr-3 text-black dark:text-white" size={24} />
+        <h2 className="text-xl font-semibold text-black dark:text-white">View Stake</h2>
       </div>
 
       <form onSubmit={handleGetStake} className="space-y-4">
         <div>
-          <label htmlFor="hotkey" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="hotkey" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Hotkey (SS58 format)
           </label>
           <input
@@ -85,23 +85,23 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
             value={hotkey}
             onChange={(e) => setHotkey(e.target.value)}
             placeholder="Enter SS58 hotkey address (starts with 5...)"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
           />
         </div>
 
         <div>
-          <label htmlFor="connected-wallet" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="connected-wallet" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Coldkey (Your Connected Wallet)
           </label>
-          <div className="p-3 bg-gray-700 rounded-lg border border-gray-600">
-            <span className="font-mono text-sm text-gray-200 break-all">
+          <div className="p-3 bg-gray-100 dark:bg-neutral-900 rounded-lg border border-black dark:border-white">
+            <span className="font-mono text-sm text-black dark:text-white break-all">
               {walletAddress || 'No wallet connected'}
             </span>
           </div>
         </div>
 
         <div>
-          <label htmlFor="netuid" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="netuid" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Subnet UID
           </label>
           <input
@@ -110,7 +110,7 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
             value={netuid}
             onChange={(e) => setNetuid(e.target.value)}
             placeholder="Enter subnet UID"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
             min="0"
           />
         </div>
@@ -135,17 +135,17 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
       </form>
 
       {error && (
-        <div className="mt-4 p-3 bg-red-900 border border-red-700 rounded-lg">
-          <p className="text-sm text-red-100">{error}</p>
+        <div className="mt-4 p-3 bg-red-50 dark:bg-red-900 border border-red-500 rounded-lg">
+          <p className="text-sm text-red-800 dark:text-red-100">{error}</p>
         </div>
       )}
 
       {stakeAmount !== null && (
-        <div className="mt-4 p-4 bg-green-900 border border-green-700 rounded-lg">
+        <div className="mt-4 p-4 bg-green-50 dark:bg-green-900 border border-green-500 rounded-lg">
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-green-100 mb-2">Stake Amount</h3>
-            <p className="text-2xl font-bold text-green-200">{stakeAmount} SN{netuid} Tokens</p>
-            <p className="text-sm text-green-300 mt-1">
+            <h3 className="text-lg font-semibold text-green-800 dark:text-green-100 mb-2">Stake Amount</h3>
+            <p className="text-2xl font-bold text-green-900 dark:text-green-200">{stakeAmount} SN{netuid} Tokens</p>
+            <p className="text-sm text-green-700 dark:text-green-300 mt-1">
               Staked from {walletAddress?.slice(0, 10)}... to {hotkey.slice(0, 10)}... on subnet {netuid}
             </p>
           </div>

@@ -65,15 +65,15 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
   };
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-700">
+    <div className="card">
       <div className="flex items-center mb-6">
-        <ArrowRightLeft className="mr-3 text-blue-400" size={24} />
-        <h2 className="text-xl font-semibold text-white">Transfer Stake</h2>
+        <ArrowRightLeft className="mr-3 text-black dark:text-white" size={24} />
+        <h2 className="text-xl font-semibold text-black dark:text-white">Transfer Stake</h2>
       </div>
 
       <form onSubmit={handleTransferStake} className="space-y-4">
         <div>
-          <label htmlFor="destination-coldkey" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="destination-coldkey" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Destination Coldkey (SS58 format)
           </label>
           <input
@@ -82,12 +82,12 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
             value={destinationColdkey}
             onChange={(e) => setDestinationColdkey(e.target.value)}
             placeholder="Enter SS58 destination coldkey address (starts with 5...)"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
           />
         </div>
 
         <div>
-          <label htmlFor="transfer-hotkey" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="transfer-hotkey" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Hotkey (SS58 format)
           </label>
           <input
@@ -96,13 +96,13 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
             value={hotkey}
             onChange={(e) => setHotkey(e.target.value)}
             placeholder="Enter SS58 hotkey address (starts with 5...)"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="origin-netuid" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="origin-netuid" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Origin Subnet UID
             </label>
             <input
@@ -111,13 +111,13 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
               value={originNetuid}
               onChange={(e) => setOriginNetuid(e.target.value)}
               placeholder="From subnet"
-              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+              className="input-field"
               min="0"
             />
           </div>
 
           <div>
-            <label htmlFor="destination-netuid" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="destination-netuid" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Destination Subnet UID
             </label>
             <input
@@ -126,14 +126,14 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
               value={destinationNetuid}
               onChange={(e) => setDestinationNetuid(e.target.value)}
               placeholder="To subnet"
-              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+              className="input-field"
               min="0"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="transfer-amount" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="transfer-amount" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Amount (ETH)
           </label>
           <input
@@ -142,7 +142,7 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount to transfer"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
             step="0.000001"
             min="0"
           />
@@ -168,13 +168,13 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
       </form>
 
       {error && (
-        <div className="mt-4 p-3 bg-red-900 border border-red-700 rounded-lg">
-          <p className="text-sm text-red-100">{error}</p>
+        <div className="mt-4 p-3 bg-red-50 dark:bg-red-900 border border-red-500 rounded-lg">
+          <p className="text-sm text-red-800 dark:text-red-100">{error}</p>
         </div>
       )}
 
-      <div className="mt-4 p-3 bg-blue-900 border border-blue-700 rounded-lg">
-        <p className="text-sm text-blue-100">
+      <div className="mt-4 p-3 bg-gray-50 dark:bg-neutral-900 border border-gray-500 rounded-lg">
+        <p className="text-sm text-gray-800 dark:text-gray-100">
           <strong>ℹ️ Info:</strong> This will transfer staked tokens from one coldkey to another, 
           potentially across different subnets. Use SS58 format for both destination coldkey and hotkey addresses.
         </p>

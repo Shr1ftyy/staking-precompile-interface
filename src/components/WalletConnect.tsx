@@ -43,13 +43,13 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
 
   if (isConnected && address) {
     return (
-      <div className="flex items-center space-x-3 bg-green-900 border border-green-700 rounded-lg px-4 py-2">
-        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-        <span className="text-sm text-green-100 font-medium">Connected</span>
-        <span className="font-mono text-sm text-green-200">{formatAddress(address)}</span>
+      <div className="flex items-center space-x-3 bg-green-50 dark:bg-green-900 border border-green-500 rounded-lg px-4 py-2">
+        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+        <span className="text-sm text-green-800 dark:text-green-100 font-medium">Connected</span>
+        <span className="font-mono text-sm text-green-700 dark:text-green-200">{formatAddress(address)}</span>
         <ExternalLink 
           size={14} 
-          className="text-green-300 hover:text-green-100 cursor-pointer"
+          className="text-green-600 dark:text-green-300 hover:text-green-800 dark:hover:text-green-100 cursor-pointer"
           onClick={() => window.open(`https://evm.taostats.io/address/${address}`, '_blank')}
         />
       </div>

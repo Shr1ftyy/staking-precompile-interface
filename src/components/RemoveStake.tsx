@@ -84,15 +84,15 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
   };
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-700">
+    <div className="card">
       <div className="flex items-center mb-6">
-        <Minus className="mr-3 text-blue-400" size={24} />
-        <h2 className="text-xl font-semibold text-white">Remove Stake</h2>
+        <Minus className="mr-3 text-black dark:text-white" size={24} />
+        <h2 className="text-xl font-semibold text-black dark:text-white">Remove Stake</h2>
       </div>
 
       <form onSubmit={handleRemoveStake} className="space-y-4">
         <div>
-          <label htmlFor="remove-hotkey" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="remove-hotkey" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Hotkey (SS58 format)
           </label>
           <input
@@ -101,12 +101,12 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
             value={hotkey}
             onChange={(e) => setHotkey(e.target.value)}
             placeholder="Enter SS58 hotkey address (starts with 5...)"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
           />
         </div>
 
         <div>
-          <label htmlFor="remove-amount" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="remove-amount" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Amount (ETH)
           </label>
           <input
@@ -115,14 +115,14 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount to remove"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
             step="0.000001"
             min="0"
           />
         </div>
 
         <div>
-          <label htmlFor="remove-netuid" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="remove-netuid" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Subnet UID
           </label>
           <input
@@ -131,7 +131,7 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
             value={netuid}
             onChange={(e) => setNetuid(e.target.value)}
             placeholder="Enter subnet UID"
-            className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-700 text-white placeholder-gray-400"
+            className="input-field"
             min="0"
           />
         </div>
@@ -177,13 +177,13 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
       </form>
 
       {error && (
-        <div className="mt-4 p-3 bg-red-900 border border-red-700 rounded-lg">
-          <p className="text-sm text-red-100">{error}</p>
+        <div className="mt-4 p-3 bg-red-50 dark:bg-red-900 border border-red-500 rounded-lg">
+          <p className="text-sm text-red-800 dark:text-red-100">{error}</p>
         </div>
       )}
 
-      <div className="mt-4 p-3 bg-yellow-900 border border-yellow-700 rounded-lg">
-        <p className="text-sm text-yellow-100">
+      <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900 border border-yellow-500 rounded-lg">
+        <p className="text-sm text-yellow-800 dark:text-yellow-100">
           <strong>⚠️ Warning:</strong> Removing stake will initiate a withdrawal process. 
           "Remove Full" will remove all staked tokens for this hotkey and subnet.
         </p>
