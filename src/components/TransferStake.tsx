@@ -210,12 +210,14 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
         </div>
       )}
 
-      <div className="mt-4 p-3 bg-gray-50 dark:bg-neutral-900 border border-gray-500 rounded-lg">
-        <p className="text-sm text-gray-800 dark:text-gray-100">
-          <strong>ℹ️ Info:</strong> This will transfer staked tokens from one coldkey to another, 
-          potentially across different subnets. Use SS58 format for both destination coldkey and hotkey addresses.
-        </p>
-      </div>
+      {viewMode === 'advanced' && (
+        <div className="mt-4 p-3 bg-gray-50 dark:bg-neutral-900 border border-gray-500 rounded-lg">
+          <p className="text-sm text-gray-800 dark:text-gray-100">
+            <strong>ℹ️ Info:</strong> This will transfer staked tokens from one coldkey to another, 
+            potentially across different subnets. Use SS58 format for both destination coldkey and hotkey addresses.
+          </p>
+        </div>
+      )}
     </div>
   );
 };
