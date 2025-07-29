@@ -64,7 +64,7 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
     >
       {isConnecting ? (
         <>
-          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+          <div className="animate-spin rounded-full h-4 w-4 border-b-2 dark:border-gray-600"></div>
           <span>Connecting...</span>
         </>
       ) : (

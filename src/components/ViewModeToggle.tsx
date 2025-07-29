@@ -11,7 +11,7 @@ export const ViewModeToggle: React.FC = () => {
         onClick={() => setViewMode('simple')}
         className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
           viewMode === 'simple'
-            ? 'bg-white dark:bg-neutral-800 text-black dark:text-white shadow-sm border border-gray-300 dark:border-gray-600'
+            ? 'bg-white dark:bg-black text-black dark:text-white shadow-sm border border-gray-300 dark:border-gray-600'
             : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
         }`}
       >
@@ -22,7 +22,7 @@ export const ViewModeToggle: React.FC = () => {
         onClick={() => setViewMode('advanced')}
         className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
           viewMode === 'advanced'
-            ? 'bg-white dark:bg-neutral-800 text-black dark:text-white shadow-sm border border-gray-300 dark:border-gray-600'
+            ? 'bg-white dark:bg-black text-black dark:text-white shadow-sm border border-gray-300 dark:border-gray-600'
             : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
         }`}
       >

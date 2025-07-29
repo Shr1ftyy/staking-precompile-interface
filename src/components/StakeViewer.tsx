@@ -125,7 +125,7 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
           <label htmlFor="connected-wallet" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Coldkey (Your Connected Wallet)
           </label>
-          <div className="p-3 bg-gray-100 dark:bg-neutral-900 rounded-lg border border-black dark:border-white">
+          <div className="p-3 bg-gray-100 dark:bg-neutral-900 rounded-lg border border-black dark:border-gray-600">
             <span className="font-mono text-sm text-black dark:text-white break-all">
               {walletAddress || 'No wallet connected'}
             </span>

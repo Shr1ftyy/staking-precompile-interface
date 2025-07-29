@@ -212,7 +212,7 @@ function App() {
                     <p className="mt-1 flex items-center">
                       <span className="text-sm">Transaction: </span>
                       <a 
-                        href={`https://etherscan.io/tx/${notification.txHash}`}
+                        href={`https://evm.taostats.io/tx/${notification.txHash}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-mono ml-1 hover:underline flex items-center"
@@ -239,7 +239,7 @@ function App() {
             <>
               {/* Tab Navigation */}
               <div className="card mb-6">
-                <div className="flex space-x-2 bg-gray-100 dark:bg-neutral-900 p-2 rounded-lg border border-black dark:border-white">
+                <div className="flex space-x-2 bg-gray-100 dark:bg-neutral-900 p-2 rounded-lg border border-black dark:border-gray-600">
                   {tabs.map((tab) => (
                     <button
                       key={tab.id}
