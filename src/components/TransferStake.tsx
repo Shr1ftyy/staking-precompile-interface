@@ -3,6 +3,7 @@ import { ArrowRightLeft, Loader2 } from 'lucide-react';
 import type { TransferStakeParams } from '../types';
 import { ss58ToPubKey, validateSs58 } from '../utils/addressUtils';
 import { useViewMode } from '../contexts/ViewModeContext';
+import { NetworkSwitcher } from './NetworkSwitcher';
 
 interface TransferStakeProps {
   onTransferStake: (params: TransferStakeParams) => Promise<void>;
@@ -85,7 +86,9 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
   };
 
   return (
-    <div className="card">
+    <NetworkSwitcher
+      title="Transfer Stake"
+    >
       <div className="flex items-center mb-6">
         <ArrowRightLeft className="mr-3 text-black dark:text-white" size={24} />
         <h2 className="text-xl font-semibold text-black dark:text-white">Transfer Stake</h2>
@@ -218,6 +221,6 @@ export const TransferStake: React.FC<TransferStakeProps> = ({ onTransferStake })
           </p>
         </div>
       )}
-    </div>
+    </NetworkSwitcher>
   );
 };

@@ -3,6 +3,7 @@ import { Minus, Loader2, Trash2 } from 'lucide-react';
 import type { RemoveStakeParams } from '../types';
 import { ss58ToPubKey, validateSs58 } from '../utils/addressUtils';
 import { useViewMode } from '../contexts/ViewModeContext';
+import { NetworkSwitcher } from './NetworkSwitcher';
 
 interface RemoveStakeProps {
   onRemoveStake: (params: RemoveStakeParams) => Promise<void>;
@@ -104,7 +105,9 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
   };
 
   return (
-    <div className="card">
+    <NetworkSwitcher
+      title="Remove Stake"
+    >
       <div className="flex items-center mb-6">
         <Minus className="mr-3 text-black dark:text-white" size={24} />
         <h2 className="text-xl font-semibold text-black dark:text-white">Remove Stake</h2>
@@ -225,6 +228,6 @@ export const RemoveStake: React.FC<RemoveStakeProps> = ({
           "Remove Full" will remove all staked tokens for this hotkey and subnet.
         </p>
       </div>
-    </div>
+    </NetworkSwitcher>
   );
 };

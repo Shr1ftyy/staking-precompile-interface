@@ -10,6 +10,7 @@ import {
   formatRao,
   parseToRao
 } from '../types';
+import { isOnBittensorNetwork } from '../utils/networkUtils';
 
 // Extend Window interface for ethereum
 interface EthereumProvider extends ethers.Eip1193Provider {
@@ -43,6 +44,16 @@ export class StakingService {
 
       this.provider = new ethers.BrowserProvider(window.ethereum);
       await this.provider.send('eth_requestAccounts', []);
+      
+      // Check if on correct network
+      const isCorrectNetwork = await isOnBittensorNetwork();
+      if (!isCorrectNetwork) {
+        console.warn('Not connected to Bittensor network');
+        // Still initialize but don't create contract
+        this.signer = await this.provider.getSigner();
+        return true;
+      }
+
       this.signer = await this.provider.getSigner();
       this.contract = new ethers.Contract(
         CONTRACT_ADDRESS,

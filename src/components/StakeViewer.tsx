@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Eye, Loader2 } from 'lucide-react';
 import { h160ToPubKey, ss58ToPubKey, validateH160, validateSs58 } from '../utils/addressUtils';
 import { useViewMode } from '../contexts/ViewModeContext';
+import { NetworkSwitcher } from './NetworkSwitcher';
 
 interface StakeViewerProps {
   onGetStake: (hotkey: string, coldkey: string, netuid: number) => Promise<string>;
@@ -85,7 +86,9 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
   };
 
   return (
-    <div className="card">
+    <NetworkSwitcher
+      title="View Stake"
+    >
       <div className="flex items-center mb-6">
         <Eye className="mr-3 text-black dark:text-white" size={24} />
         <h2 className="text-xl font-semibold text-black dark:text-white">View Stake</h2>
@@ -187,6 +190,6 @@ export const StakeViewer: React.FC<StakeViewerProps> = ({ onGetStake, walletAddr
           </div>
         </div>
       )}
-    </div>
+    </NetworkSwitcher>
   );
 };
