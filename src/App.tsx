@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import { Coins, AlertCircle, CheckCircle, ExternalLink } from 'lucide-react';
 import { WalletConnect } from './components/WalletConnect';
 import { StakeViewer } from './components/StakeViewer';
-import { RemoveStake } from './components/RemoveStake';
+// TODO: Re-enable RemoveStake component when feature is restored
+// import { RemoveStake } from './components/RemoveStake';
 import { TransferStake } from './components/TransferStake';
 import { ThemeToggle } from './components/ThemeToggle';
 import { ViewModeToggle } from './components/ViewModeToggle';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ViewModeProvider } from './contexts/ViewModeContext';
 import { StakingService } from './services/stakingService';
-import type { RemoveStakeParams, TransferStakeParams } from './types';
+// TODO: Re-enable RemoveStakeParams type when feature is restored
+import type { /* RemoveStakeParams, */ TransferStakeParams } from './types';
 
 function App() {
   const [stakingService] = useState(() => new StakingService());
@@ -89,55 +91,56 @@ function App() {
     }
   };
 
-  const handleRemoveStake = async (params: RemoveStakeParams) => {
-    try {
-      const result = await stakingService.removeStake(params);
+  // TODO: Re-enable these functions when RemoveStake feature is restored
+  // const handleRemoveStake = async (params: RemoveStakeParams) => {
+  //   try {
+  //     const result = await stakingService.removeStake(params);
       
-      if (result.status === 'failed') {
-        showNotification('error', result.error || 'Transaction failed');
-        return;
-      }
+  //     if (result.status === 'failed') {
+  //       showNotification('error', result.error || 'Transaction failed');
+  //       return;
+  //     }
 
-      showNotification('info', 'Transaction submitted. Waiting for confirmation...', result.hash);
+  //     showNotification('info', 'Transaction submitted. Waiting for confirmation...', result.hash);
       
-      // Wait for transaction confirmation
-      const finalResult = await stakingService.waitForTransaction(result.hash);
+  //     // Wait for transaction confirmation
+  //     const finalResult = await stakingService.waitForTransaction(result.hash);
       
-      if (finalResult.status === 'success') {
-        showNotification('success', 'Stake removed successfully!', finalResult.hash);
-      } else {
-        showNotification('error', finalResult.error || 'Transaction failed');
-      }
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Failed to remove stake';
-      showNotification('error', message);
-    }
-  };
+  //     if (finalResult.status === 'success') {
+  //       showNotification('success', 'Stake removed successfully!', finalResult.hash);
+  //     } else {
+  //       showNotification('error', finalResult.error || 'Transaction failed');
+  //     }
+  //   } catch (error) {
+  //     const message = error instanceof Error ? error.message : 'Failed to remove stake';
+  //     showNotification('error', message);
+  //   }
+  // };
 
-  const handleRemoveStakeFull = async (hotkey: string, netuid: number) => {
-    try {
-      const result = await stakingService.removeStakeFull(hotkey, netuid);
+  // const handleRemoveStakeFull = async (hotkey: string, netuid: number) => {
+  //   try {
+  //     const result = await stakingService.removeStakeFull(hotkey, netuid);
       
-      if (result.status === 'failed') {
-        showNotification('error', result.error || 'Transaction failed');
-        return;
-      }
+  //     if (result.status === 'failed') {
+  //       showNotification('error', result.error || 'Transaction failed');
+  //       return;
+  //     }
 
-      showNotification('info', 'Transaction submitted. Waiting for confirmation...', result.hash);
+  //     showNotification('info', 'Transaction submitted. Waiting for confirmation...', result.hash);
       
-      // Wait for transaction confirmation
-      const finalResult = await stakingService.waitForTransaction(result.hash);
+  //     // Wait for transaction confirmation
+  //     const finalResult = await stakingService.waitForTransaction(result.hash);
       
-      if (finalResult.status === 'success') {
-        showNotification('success', 'Full stake removed successfully!', finalResult.hash);
-      } else {
-        showNotification('error', finalResult.error || 'Transaction failed');
-      }
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Failed to remove full stake';
-      showNotification('error', message);
-    }
-  };
+  //     if (finalResult.status === 'success') {
+  //       showNotification('success', 'Full stake removed successfully!', finalResult.hash);
+  //     } else {
+  //       showNotification('error', finalResult.error || 'Transaction failed');
+  //     }
+  //   } catch (error) {
+  //     const message = error instanceof Error ? error.message : 'Failed to remove full stake';
+  //     showNotification('error', message);
+  //   }
+  // };
 
   const handleTransferStake = async (params: TransferStakeParams) => {
     try {
@@ -264,11 +267,23 @@ function App() {
                   />
                 )}
                 
+                {/* TODO: Re-enable when RemoveStake feature is restored */}
                 {activeTab === 'remove' && (
-                  <RemoveStake
-                    onRemoveStake={handleRemoveStake}
-                    onRemoveStakeFull={handleRemoveStakeFull}
-                  />
+                  // <RemoveStake
+                  //   onRemoveStake={handleRemoveStake}
+                  //   onRemoveStakeFull={handleRemoveStakeFull}
+                  // />
+                  <div className="card">
+                    <div className="text-center py-12">
+                      <div className="text-6xl mb-4">🚧</div>
+                      <h3 className="text-xl font-medium text-black dark:text-white mb-2">
+                        Under Construction
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        The Remove Stake feature is currently being developed and will be available soon.
+                      </p>
+                    </div>
+                  </div>
                 )}
                 
                 {activeTab === 'transfer' && (
